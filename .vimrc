@@ -11,6 +11,9 @@
 " `vim -u foo`).
 set nocompatible
 
+" Set system clipboard on
+set clipboard=unnamedplus
+
 " Turn on syntax highlighting.
 syntax on
 
