@@ -30,6 +30,14 @@ Symlink with the config file for tmux
 ```bash
 ln -s ~/.vim/.tmux.conf ~/.tmux.conf
 ```
+### Copy colors and templates to .vim
+
+```bash
+mkdir ~/.vim/colors/
+mkdir ~/.vim/templates/
+cp -r ~/.dotfiles/colors/ ~/.vim/colors/
+cp -r ~/.dotfiles/templates/ ~/.vim/templates/
+```
 
 ### BASH Config
 
@@ -46,18 +54,17 @@ ln -s ~/.dotfiles/.bashrc ~/.bashrc
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
-
 From [Brew.sh](https://brew.sh/)
 
 ### Add packages
 
 ```
-brew install spotify
-brew install zoomus
-brew install slack
+brew install --cask zoomus
+brew install --cask slack
 brew install python@3.9
+brew install node
 pip3 install --upgrade pip
-pip3 install jupyterlab==3
+sudo pip3 install jupyterlab==3
+jupyter lab build
 ```
-
 
