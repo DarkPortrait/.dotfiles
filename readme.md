@@ -67,4 +67,9 @@ pip3 install --upgrade pip
 sudo pip3 install jupyterlab==3
 jupyter lab build
 ```
+### zsh profile
 
+```bash
+ln -s ~/.dotfiles/.zprofile ~/.zprofile
+ln -s ~/.dotfiles/.zshrc ~/.zshrc
+```
