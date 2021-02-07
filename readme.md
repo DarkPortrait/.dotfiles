@@ -1,4 +1,4 @@
-# Tanvir's .dotfiles
+# DarkPortrait's .dotfiles
 Lives in the `~/.dotfiles` directory. Contains config file of vim, tmux, bashrc and git.
 
 ## Dotfiles
