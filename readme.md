@@ -73,3 +73,28 @@ jupyter lab build
 ln -s ~/.dotfiles/.zprofile ~/.zprofile
 ln -s ~/.dotfiles/.zshrc ~/.zshrc
 ```
+
+### Setting up analytics environment for Python on M1
+
+Note: Rosetta was installed. But this installation uses ARM.
+
+1. Uninstalled Python 3.9 and installed Python 3.8
+1. Created a virtual environment 
+
+```bash
+cd Documents/python/00-environments/
+python3 -m venv m1datascience
+```
+1. Installed numpy and pandas
+
+```bash
+pip3 install numpy
+pip3 install cython
+OPENBLAS="$(brew --prefix openblas)" MACOSX_DEPLOYMENT_TARGET=11.1 pip3 install pandas --no-use-pep517
+```
+1. Installed other packages as usual
+
+```bash
+pip3 install --upgrade pip
+pip3 install matplotlib seaborn jupyterlab pandas_gbq
+```
