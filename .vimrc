@@ -12,7 +12,7 @@
 set nocompatible
 
 " Set system clipboard on
-set clipboard=unnamedplus
+set clipboard=unnamed
 
 " Turn on syntax highlighting.
 syntax on
