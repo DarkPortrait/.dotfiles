@@ -28,6 +28,16 @@ set number
 " down.
 set relativenumber
 
+" This copies the indentation of last line to the next line
+set autoindent
+
+" This will set tabstops every 4 spaces
+set tabstop=4
+
+" This sets shiftwidth to match the tabstop.
+" For more information, read http://vimdoc.sourceforge.net/htmldoc/usr_30.html#30.2
+set shiftwidth=4
+
 " Themes
 " colorscheme solarized8_dark 
 
