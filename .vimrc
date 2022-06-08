@@ -117,3 +117,4 @@ nnoremap <C-j> <C-w>j<CR>
 
 autocmd BufNewFile *-notes.md r ~/.vim/templates/notes.md
 autocmd BufNewFile,BufRead *.md set spell spelllang=en_us
+autocmd BufNewFile,BufRead *.js,*.html,*css set tabstop=2 cindent shiftwidth=2
