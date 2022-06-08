@@ -116,3 +116,4 @@ nnoremap <C-j> <C-w>j<CR>
 " Skeleton file is loaded when a markdown file is created for work notes.
 
 autocmd BufNewFile *-notes.md r ~/.vim/templates/notes.md
+autocmd BufNewFile,BufRead *.md set spell spelllang=en_us
