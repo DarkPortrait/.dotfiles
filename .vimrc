@@ -102,6 +102,16 @@ inoremap <Right> <ESC>:echoe "Use l"<CR>
 inoremap <Up>    <ESC>:echoe "Use k"<CR>
 inoremap <Down>  <ESC>:echoe "Use j"<CR>
 
+" Mapping NERDTree to shortcuts
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+
+" Easy moving between viewports
+nnoremap <C-h> <C-w>h<CR>
+nnoremap <C-l> <C-w>l<CR>
+nnoremap <C-k> <C-w>k<CR>
+nnoremap <C-j> <C-w>j<CR>
+
 " Template for daily work notes.
 " Skeleton file is loaded when a markdown file is created for work notes.
 
