@@ -38,6 +38,9 @@ set tabstop=4
 " For more information, read http://vimdoc.sourceforge.net/htmldoc/usr_30.html#30.2
 set cindent shiftwidth=4
 
+" Expands tab to spaces 
+set expandtab
+
 " Themes
 " colorscheme solarized8_dark 
 
