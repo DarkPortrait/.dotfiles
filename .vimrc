@@ -35,8 +35,12 @@ set autoindent
 set tabstop=4
 
 " This sets shiftwidth to match the tabstop.
-" For more information, read http://vimdoc.sourceforge.net/htmldoc/usr_30.html#30.2
-set cindent shiftwidth=4
+set shiftwidth=4
+
+" This indents automatically depending on the sytax.
+" For example, adds indent after a opening bracket and removes
+" after closing brackets.
+set smartindent
 
 " Expands tab to spaces 
 set expandtab
@@ -117,5 +121,6 @@ nnoremap <C-j> <C-w>j<CR>
 
 autocmd BufNewFile *-notes.md r ~/.vim/templates/notes.md
 autocmd BufNewFile,BufRead *.md set spell spelllang=en_us
-" Opening CSS And JS files from NERDtree were showing both 4 and 2 stops
-" autocmd BufNewFile,BufRead *.js,*.html,*css set tabstop=2 cindent shiftwidth=2
+
+" Opening CSS And JS files will have 2 spaces for indent
+autocmd FileType javascript,html,css set shiftwidth=2 tabstop=2
