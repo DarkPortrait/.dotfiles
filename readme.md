@@ -6,13 +6,13 @@ Lives in the `~/.dotfiles` directory. Contains config file of vim, tmux, bashrc 
 ### VIM Config
 The .vimrc is moved to .vim and symlinked to the original location.
 ```bash
-ln -s ~/.vim/.vimrc ~/.vimrc
+ln -s ~/.dotfiles/.vimrc ~/.vimrc
 ```
 
 ### GIT Config
 The .gitconfig is also in the .vim directory for convenience.
 ```bash
-ln -s ~/.vim/.gitconfig ~/.gitconfig 
+ln -s ~/.dotfiles/.gitconfig ~/.gitconfig 
 ```
 
 ### TMUX Themes
