@@ -53,7 +53,7 @@ set foldlevel=99
 nnoremap <space> za
 
 " Themes
-" colorscheme solarized8_dark 
+colorscheme Atelier_CaveDark
 
 " Always show the status line at the bottom, even if you only have one window open.
 set laststatus=2
