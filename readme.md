@@ -35,9 +35,29 @@ ln -s ~/.vim/.tmux.conf ~/.tmux.conf
 ```bash
 mkdir ~/.vim/colors/
 mkdir ~/.vim/templates/
-cp -r ~/.dotfiles/colors/ ~/.vim/colors/
+ln -s ~/.dotfiles/colors ~/.vim/colors
 cp -r ~/.dotfiles/templates/ ~/.vim/templates/
 ```
+
+### LSP Setup for Vim
+
+The `.vimrc` is configured to use Python LSP (Language Server Protocol) for features like diagnostics, auto-completion, and code navigation.
+
+1. Create a virtual environment in the dotfiles directory:
+```bash
+cd ~/.dotfiles
+python3 -m venv env
+```
+
+2. Install python-lsp-server with all optional dependencies:
+```bash
+source env/bin/activate
+pip install 'python-lsp-server[all]'
+```
+
+The LSP server will now be available at `~/.dotfiles/env/bin/pylsp` and Vim will automatically use it when editing Python files.
+
+**Note**: The `.vimrc` is already configured to use this LSP server path, so no additional configuration is needed.
 
 ### BASH Config
 
@@ -49,52 +69,9 @@ ln -s ~/.dotfiles/.bashrc ~/.bashrc
 
 ## Setting up MacOS
 
-### 1. Install Brew
+### Install Brew
 
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 From [Brew.sh](https://brew.sh/)
-
-### Add packages
-
-```
-brew install --cask zoomus
-brew install --cask slack
-brew install python@3.9
-brew install node
-pip3 install --upgrade pip
-sudo pip3 install jupyterlab==3
-jupyter lab build
-```
-### zsh profile
-
-```bash
-ln -s ~/.dotfiles/.zprofile ~/.zprofile
-ln -s ~/.dotfiles/.zshrc ~/.zshrc
-```
-
-### Setting up analytics environment for Python on M1
-
-Note: Rosetta was installed. But this installation uses ARM.
-
-1. Uninstalled Python 3.9 and installed Python 3.8
-1. Created a virtual environment 
-
-```bash
-cd Documents/python/00-environments/
-python3 -m venv m1datascience
-```
-1. Installed numpy and pandas
-
-```bash
-pip3 install numpy
-pip3 install cython
-OPENBLAS="$(brew --prefix openblas)" MACOSX_DEPLOYMENT_TARGET=11.1 pip3 install pandas --no-use-pep517
-```
-1. Installed other packages as usual
-
-```bash
-pip3 install --upgrade pip
-pip3 install matplotlib seaborn jupyterlab pandas_gbq
-```
