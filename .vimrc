@@ -133,11 +133,11 @@ autocmd FileType javascript,html,css set shiftwidth=2 tabstop=2
 " 3. prabirshrestha/asyncomplete.vim
 " 4. prabirshrestha/asyncomplete-lsp.vim
 
-if executable('pylsp')
+if executable('/Users/tanvir/.dotfiles/env/bin/pylsp')
     " pip install python-lsp-server
     au User lsp_setup call lsp#register_server({
         \ 'name': 'pylsp',
-        \ 'cmd': {server_info->['pylsp']},
+        \ 'cmd': {server_info->['/Users/tanvir/.dotfiles/env/bin/pylsp']},
         \ 'allowlist': ['python'],
         \ })
 endif
