@@ -11,6 +11,9 @@
 " `vim -u foo`).
 set nocompatible
 
+" Set leader key to space
+let mapleader = " "
+
 " Set system clipboard on
 set clipboard=unnamed
 
@@ -49,8 +52,8 @@ set expandtab
 set foldmethod=indent
 set foldlevel=99
 
-" Enable folding with the spacebar
-nnoremap <space> za
+" Enable folding with backslash
+nnoremap \ za
 
 " Always show the status line at the bottom, even if you only have one window open.
 set laststatus=2
@@ -126,3 +129,4 @@ autocmd FileType javascript,html,css set shiftwidth=2 tabstop=2
 source ~/.dotfiles/vim-lsp.vim
 source ~/.dotfiles/plugin.vim
 source ~/.dotfiles/colors.vim
+source ~/.dotfiles/fzf.vim
