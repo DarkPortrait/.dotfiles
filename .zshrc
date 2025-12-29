@@ -1,17 +1,14 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/tanvir/.oh-my-zsh"
+
+# Add Homebrew Python to PATH
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="fino"
-
-# Add Homebrew Python to PATH
-export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -25,15 +22,6 @@ export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 # Uncomment the following line to use hyphen-insensitive completion.
 # Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
@@ -75,10 +63,10 @@ export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
+# Source files
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
