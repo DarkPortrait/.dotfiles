@@ -1,4 +1,7 @@
-set termguicolors
+" Enable termguicolors only inside tmux
+if !empty($TMUX)
+  set termguicolors
+endif
 
 let g:tokyonight_style = 'night' " available: night, storm
 let g:tokyonight_enable_italic = 1
