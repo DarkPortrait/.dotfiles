@@ -59,6 +59,16 @@ The LSP server will now be available at `~/.dotfiles/env/bin/pylsp` and Vim will
 
 **Note**: The `.vimrc` is already configured to use this LSP server path, so no additional configuration is needed.
 
+### FZF Setup for Vim
+
+The Vim configuration includes FZF (fuzzy finder) for fast file and text searching. Install the required dependencies:
+
+```bash
+brew install ripgrep fzf
+```
+
+These enable FZF commands in Vim like `:Rg` for searching text and `:Files` for finding files.
+
 ### BASH Config
 
 Bash on Ubuntu.
