@@ -97,3 +97,8 @@ if [ -f '/Users/tanvir/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/tanvir/g
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/tanvir/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/tanvir/google-cloud-sdk/completion.zsh.inc'; fi
 export PATH="/opt/homebrew/opt/python@3.10/bin:$PATH"
+
+. "$HOME/.atuin/bin/env"
+
+eval "$(atuin init zsh)"
+export PATH="$HOME/.local/bin:$PATH"
