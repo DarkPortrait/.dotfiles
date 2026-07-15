@@ -10,3 +10,6 @@
 	browser = google-chrome
 [commit]
 	gpgsign = true
+[push]
+	default = current
+	autoSetupRemote = true
