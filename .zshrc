@@ -102,3 +102,16 @@ export PATH="/opt/homebrew/opt/python@3.10/bin:$PATH"
 
 eval "$(atuin init zsh)"
 export PATH="$HOME/.local/bin:$PATH"
+alias claude-acctuate='CLAUDE_CONFIG_DIR=~/.claude-acctuate command claude'
+
+# Secrets (untracked). Copy secrets-dist.zsh -> secrets.zsh and fill in the values.
+if [ -f "$HOME/.dotfiles/secrets.zsh" ]; then
+  source "$HOME/.dotfiles/secrets.zsh"
+elif [ -f "$HOME/.dotfiles/secrets-dist.zsh" ]; then
+  echo "zsh: ~/.dotfiles/secrets.zsh missing - run: cp ~/.dotfiles/secrets-dist.zsh ~/.dotfiles/secrets.zsh" >&2
+fi
+
+# Load shell functions from ~/.dotfiles/functions.zsh
+if [ -f "$HOME/.dotfiles/functions.zsh" ]; then
+  source "$HOME/.dotfiles/functions.zsh"
+fi
