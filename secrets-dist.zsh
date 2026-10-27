@@ -13,3 +13,7 @@ export CLICKUP_API_TOKEN=""
 
 # Kaneo API key
 export KANEO_API_KEY=""
+
+# Figma personal access token (Figma > Settings > Security > Personal access tokens)
+# Used by the figma MCP server (figma-developer-mcp).
+export FIGMA_API_KEY=""
