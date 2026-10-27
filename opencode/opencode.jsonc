@@ -1,13 +1,279 @@
 {
+  // API keys come from ~/.dotfiles/secrets.zsh (template: secrets-dist.zsh).
+  // Secrets: CLICKUP_API_TOKEN, FIGMA_API_KEY, KANEO_API_KEY, KANEO_WORKSPACE_ID.
   "$schema": "https://opencode.ai/config.json",
-  "mcp": {
-    "clickup": {
-      "type": "local",
-      "command": ["npx", "-y", "@nazruden/clickup-server"],
-      "environment": {
-        "CLICKUP_PERSONAL_TOKEN": "{env:CLICKUP_API_TOKEN}"
+  "model": "multi-model-gateway/deepseek-flash",
+  "small_model": "multi-model-gateway/deepseek-flash",
+  "provider": {
+    "multi-model-gateway": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Multi-Model Gateway",
+      "options": {
+        "baseURL": "https://multi-api.deepseekv4pro.com/v1",
+        "apiKey": "{file:~/.config/opencode/multi-model-gateway.key}"
       },
-      "enabled": true
+      "models": {
+        "deepseek-flash": {
+          "name": "DeepSeek Flash",
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "attachment": true,
+          "reasoning": true,
+          "options": {
+            "reasoningEffort": "high"
+          },
+          "variants": {
+            "off": {
+              "reasoningEffort": "none"
+            },
+            "low": {
+              "reasoningEffort": "low"
+            },
+            "high": {
+              "reasoningEffort": "high"
+            },
+            "max": {
+              "reasoningEffort": "max"
+            }
+          }
+        },
+        "glm-5.3-flash": {
+          "name": "GLM-5.3-Flash",
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "attachment": true,
+          "reasoning": true,
+          "options": {
+            "reasoningEffort": "max"
+          },
+          "variants": {
+            "low": {
+              "reasoningEffort": "low"
+            },
+            "high": {
+              "reasoningEffort": "high"
+            },
+            "max": {
+              "reasoningEffort": "max"
+            }
+          }
+        },
+        "mimo-flash": {
+          "name": "MiMo V2.6 Flash",
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "attachment": true,
+          "reasoning": true,
+          "options": {
+            "reasoningEffort": "high"
+          },
+          "variants": {
+            "off": {
+              "reasoningEffort": "none"
+            },
+            "on": {
+              "reasoningEffort": "high"
+            }
+          }
+        },
+        "mimo-pro": {
+          "name": "MiMo V2.6 Pro",
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "attachment": true,
+          "reasoning": true,
+          "options": {
+            "reasoningEffort": "high"
+          },
+          "variants": {
+            "off": {
+              "reasoningEffort": "none"
+            },
+            "on": {
+              "reasoningEffort": "high"
+            }
+          }
+        },
+        "glm-5.3": {
+          "name": "GLM-5.3",
+          "modalities": {
+            "input": [
+              "text"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "attachment": false,
+          "reasoning": true,
+          "options": {
+            "reasoningEffort": "max"
+          },
+          "variants": {
+            "low": {
+              "reasoningEffort": "low"
+            },
+            "high": {
+              "reasoningEffort": "high"
+            },
+            "max": {
+              "reasoningEffort": "max"
+            }
+          }
+        },
+        "kimi-k3": {
+          "name": "Kimi-K3",
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "attachment": true,
+          "reasoning": true,
+          "options": {
+            "reasoningEffort": "max"
+          },
+          "variants": {
+            "low": {
+              "reasoningEffort": "low"
+            },
+            "high": {
+              "reasoningEffort": "high"
+            },
+            "max": {
+              "reasoningEffort": "max"
+            }
+          }
+        },
+        "qwen3.8-max": {
+          "name": "Qwen3.8 Max",
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "attachment": true,
+          "reasoning": true,
+          "options": {
+            "reasoningEffort": "xhigh"
+          },
+          "variants": {
+            "off": {
+              "reasoningEffort": "none"
+            },
+            "low": {
+              "reasoningEffort": "low"
+            },
+            "medium": {
+              "reasoningEffort": "medium"
+            },
+            "xhigh": {
+              "reasoningEffort": "xhigh"
+            }
+          }
+        },
+        "minimax-m3": {
+          "name": "MiniMax M3",
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "attachment": true,
+          "reasoning": true,
+          "options": {
+            "reasoningEffort": "high"
+          },
+          "variants": {
+            "off": {
+              "reasoningEffort": "none"
+            },
+            "on": {
+              "reasoningEffort": "high"
+            }
+          }
+        }
+      }
+    }
+  },
+  "mcp": {
+    "servers": {
+      "figma": {
+        "type": "local",
+        "command": [
+          "npx",
+          "-y",
+          "figma-developer-mcp",
+          "--stdio"
+        ],
+        "environment": {
+          "FIGMA_API_KEY": "{env:FIGMA_API_KEY}"
+        }
+      },
+      "clickup": {
+        "type": "local",
+        "command": [
+          "npx",
+          "-y",
+          "@nazruden/clickup-server"
+        ],
+        "environment": {
+          "CLICKUP_PERSONAL_TOKEN": "{env:CLICKUP_API_TOKEN}"
+        }
+      },
+      "kaneo": {
+        "type": "local",
+        "command": [
+          "npx",
+          "-y",
+          "@sadamdi/kaneo-mcp",
+          "serve"
+        ],
+        "environment": {
+          "KANEO_API_KEY": "{env:KANEO_API_KEY}",
+          "KANEO_WORKSPACE_ID": "{env:KANEO_WORKSPACE_ID}"
+        }
+      }
     }
   }
 }

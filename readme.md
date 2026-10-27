@@ -102,8 +102,9 @@ ln -s ~/.dotfiles/opencode ~/.config/opencode
 ```
 
 API keys are read from the environment, not the config:
-`CLICKUP_API_TOKEN` (clickup MCP) and `FIGMA_API_KEY` (figma MCP) come from
-`secrets.zsh`, so opencode must be started from a shell that has sourced it.
+`CLICKUP_API_TOKEN` (clickup MCP), `FIGMA_API_KEY` (figma MCP) and
+`KANEO_API_KEY`/`KANEO_WORKSPACE_ID` (kaneo MCP) come from `secrets.zsh`, so
+opencode must be started from a shell that has sourced it.
 The provider ("plan") key stays a local file and is gitignored:
 
 ```bash

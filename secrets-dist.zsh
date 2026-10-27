@@ -11,8 +11,10 @@
 # ClickUp API token (ClickUp > Settings > Apps > API Token)
 export CLICKUP_API_TOKEN=""
 
-# Kaneo API key
+# Kaneo API key and workspace ID (Settings > Account > Developer Settings > API Keys;
+# the workspace ID is the segment after /dashboard/workspace/ in the app URL)
 export KANEO_API_KEY=""
+export KANEO_WORKSPACE_ID=""
 
 # Figma personal access token (Figma > Settings > Security > Personal access tokens)
 # Used by the figma MCP server (figma-developer-mcp).
