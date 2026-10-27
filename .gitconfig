@@ -1,8 +1,6 @@
-[user]
-	name = Tanvir Alam
-	email = 8191415+DarkPortrait@users.noreply.github.com
-	username = DarkPortrait 
-	signingkey = 44A788C20614DDD7
+# Shared git config. Identity is per machine: GIT_AUTHOR_* / GIT_COMMITTER_*
+# come from ~/.dotfiles/secrets.zsh. With no user.signingkey, git signs with the
+# gpg key matching the committer email.
 [core]
 	editor = vim
 	whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol

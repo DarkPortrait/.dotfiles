@@ -10,6 +10,14 @@ export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="fino"
 
+# Secrets and per-machine overrides (untracked), e.g. ZSH_THEME. Sourced before
+# oh-my-zsh so overrides take effect. Copy secrets-dist.zsh -> secrets.zsh and fill in the values.
+if [ -f "$HOME/.dotfiles/secrets.zsh" ]; then
+  source "$HOME/.dotfiles/secrets.zsh"
+elif [ -f "$HOME/.dotfiles/secrets-dist.zsh" ]; then
+  echo "zsh: ~/.dotfiles/secrets.zsh missing - run: cp ~/.dotfiles/secrets-dist.zsh ~/.dotfiles/secrets.zsh" >&2
+fi
+
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -98,18 +106,12 @@ if [ -f '/Users/tanvir/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/tanvir/g
 if [ -f '/Users/tanvir/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/tanvir/google-cloud-sdk/completion.zsh.inc'; fi
 export PATH="/opt/homebrew/opt/python@3.10/bin:$PATH"
 
-. "$HOME/.atuin/bin/env"
+# atuin: ~/.atuin/bin/env exists for the install script, not for brew
+[ -f "$HOME/.atuin/bin/env" ] && . "$HOME/.atuin/bin/env"
 
-eval "$(atuin init zsh)"
+command -v atuin >/dev/null && eval "$(atuin init zsh)"
 export PATH="$HOME/.local/bin:$PATH"
 alias claude-acctuate='CLAUDE_CONFIG_DIR=~/.claude-acctuate command claude'
-
-# Secrets (untracked). Copy secrets-dist.zsh -> secrets.zsh and fill in the values.
-if [ -f "$HOME/.dotfiles/secrets.zsh" ]; then
-  source "$HOME/.dotfiles/secrets.zsh"
-elif [ -f "$HOME/.dotfiles/secrets-dist.zsh" ]; then
-  echo "zsh: ~/.dotfiles/secrets.zsh missing - run: cp ~/.dotfiles/secrets-dist.zsh ~/.dotfiles/secrets.zsh" >&2
-fi
 
 # Load shell functions from ~/.dotfiles/functions.zsh
 if [ -f "$HOME/.dotfiles/functions.zsh" ]; then

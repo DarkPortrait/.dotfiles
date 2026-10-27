@@ -4,6 +4,5 @@ package.json
 package-lock.json
 bun.lock
 
-# Secrets - never commit. Local-only files; templates are tracked as *.dist
-multi-model-gateway.key
+# Machine-local state - never commit. API keys come from ~/.dotfiles/secrets.zsh
 service.json

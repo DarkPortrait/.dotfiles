@@ -1,6 +1,7 @@
 {
   // API keys come from ~/.dotfiles/secrets.zsh (template: secrets-dist.zsh).
-  // Secrets: CLICKUP_API_TOKEN, FIGMA_API_KEY, KANEO_API_KEY, KANEO_WORKSPACE_ID.
+  // Secrets: MULTI_MODEL_GATEWAY_API_KEY, DEEPSEEK_CODING_PLAN_API_KEY, KANEO_API_KEY, KANEO_WORKSPACE_ID.
+  // ClickUp and Figma use their official remote MCPs (OAuth: opencode mcp auth <name>).
   "$schema": "https://opencode.ai/config.json",
   "model": "multi-model-gateway/deepseek-flash",
   "small_model": "multi-model-gateway/deepseek-flash",
@@ -10,7 +11,7 @@
       "name": "Multi-Model Gateway",
       "options": {
         "baseURL": "https://multi-api.deepseekv4pro.com/v1",
-        "apiKey": "{file:~/.config/opencode/multi-model-gateway.key}"
+        "apiKey": "{env:MULTI_MODEL_GATEWAY_API_KEY}"
       },
       "models": {
         "deepseek-flash": {
@@ -234,32 +235,31 @@
           }
         }
       }
+    },
+    "deepseek-coding-plan": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "DeepSeek Coding Plan",
+      "options": {
+        "baseURL": "https://api.deepseekv4pro.com/v1",
+        "apiKey": "{env:DEEPSEEK_CODING_PLAN_API_KEY}"
+      },
+      "models": {
+        "deepseek-flash": { "name": "DeepSeek Flash 1017", "reasoning": true, "interleaved": { "field": "reasoning_content" } },
+        "deepseek-v4-flash": { "name": "DeepSeek V4 Flash", "reasoning": true, "interleaved": { "field": "reasoning_content" } },
+        "deepseek-v4-pro": { "name": "DeepSeek V4 Pro", "reasoning": true, "interleaved": { "field": "reasoning_content" } },
+        "deepseek-v4-flash-vision-exp": { "name": "DeepSeek V4 Flash Vision Exp", "reasoning": true, "interleaved": { "field": "reasoning_content" } }
+      }
     }
   },
   "mcp": {
     "servers": {
       "figma": {
-        "type": "local",
-        "command": [
-          "npx",
-          "-y",
-          "figma-developer-mcp",
-          "--stdio"
-        ],
-        "environment": {
-          "FIGMA_API_KEY": "{env:FIGMA_API_KEY}"
-        }
+        "type": "remote",
+        "url": "https://mcp.figma.com/mcp"
       },
       "clickup": {
-        "type": "local",
-        "command": [
-          "npx",
-          "-y",
-          "@nazruden/clickup-server"
-        ],
-        "environment": {
-          "CLICKUP_PERSONAL_TOKEN": "{env:CLICKUP_API_TOKEN}"
-        }
+        "type": "remote",
+        "url": "https://mcp.clickup.com/mcp"
       },
       "kaneo": {
         "type": "local",
