@@ -116,6 +116,17 @@ API keys are read from the environment, not the config:
 `KANEO_API_KEY`/`KANEO_WORKSPACE_ID` (kaneo MCP) come from `secrets.zsh`, so
 opencode must be started from a shell that has sourced it.
 
+The background service (TUI and `opencode serve --service`) is a child of the
+shell that first launched the TUI, so it only sees env vars that shell had.
+Keys added to `secrets.zsh` later are invisible to it until you quit and
+relaunch the TUI. Alternatively, store provider keys inside opencode's own
+credential store, which every process reads regardless of env:
+
+```bash
+opencode auth login     # pick the provider, paste the key
+opencode auth list      # see what is stored
+```
+
 ClickUp and Figma use their official remote MCPs and log in with OAuth once per
 machine:
 
