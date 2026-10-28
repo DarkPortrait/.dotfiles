@@ -16,9 +16,11 @@ ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 ```
 
 It holds no identity. Name and email come from `GIT_AUTHOR_*`/`GIT_COMMITTER_*`
-in `secrets.zsh`, and commits are signed with the gpg key whose uid matches
-`GIT_COMMITTER_EMAIL`. Apps not started from a shell (e.g. a GUI git client)
-won't see these variables.
+in `secrets.zsh`, and the signing key from `GIT_CONFIG_KEY_0=user.signingkey`
+there. Name that key explicitly instead of relying on email matching: gpg will
+not resolve the `Name <email>` string git hands it as the signer, and commits
+fail with `skipped "...": No secret key`. Apps not started from a shell (e.g. a
+GUI git client) won't see these variables.
 
 ### TMUX Themes
 Clone the theme repository to `~/.tmux-themepack`
