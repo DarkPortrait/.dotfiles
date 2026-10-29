@@ -1,7 +1,10 @@
 {
   // API keys come from ~/.dotfiles/secrets.zsh (template: secrets-dist.zsh).
-  // Secrets: MULTI_MODEL_GATEWAY_API_KEY, DEEPSEEK_CODING_PLAN_API_KEY, KANEO_API_KEY, KANEO_WORKSPACE_ID.
+  // Secrets: MULTI_MODEL_GATEWAY_API_KEY, DEEPSEEK_CODING_PLAN_API_KEY, KANEO_API_KEY, KANEO_WORKSPACE_ID
+  // and optionally SLACK_MCP_CLIENT_ID/SLACK_MCP_CLIENT_SECRET.
   // ClickUp and Figma use their official remote MCPs (OAuth: opencode mcp auth <name>).
+  // Slack's official MCP needs an OAuth client from your own Slack app, so it ships
+  // disabled. See readme.md#opencode-config.
   "$schema": "https://opencode.ai/config.json",
   "model": "multi-model-gateway/deepseek-flash",
   "small_model": "multi-model-gateway/deepseek-flash",
@@ -272,6 +275,23 @@
         "environment": {
           "KANEO_API_KEY": "{env:KANEO_API_KEY}",
           "KANEO_WORKSPACE_ID": "{env:KANEO_WORKSPACE_ID}"
+        }
+      },
+      "slack": {
+        // Slack publishes no dynamic client registration, so a plain URL is not
+        // enough: this needs an internal Slack app's OAuth client. Disabled until
+        // the env vars exist and the app is approved. See readme.md#opencode-config.
+        "type": "remote",
+        "url": "https://mcp.slack.com/mcp",
+        "disabled": true,
+        "oauth": {
+          "client_id": "{env:SLACK_MCP_CLIENT_ID}",
+          "client_secret": "{env:SLACK_MCP_CLIENT_SECRET}",
+          "callback_port": 3199,
+          "redirect_uri": "http://localhost:3199/callback",
+          // Must be a subset of the app's user scopes, or Slack answers
+          // invalid_scope. Drop chat:write (and the history scopes) to stay read-only.
+          "scope": "search:read.public search:read.private search:read.im search:read.mpim search:read.users search:read.files files:read channels:history groups:history im:history mpim:history channels:read groups:read im:read mpim:read users:read users:read.email chat:write"
         }
       }
     }

@@ -26,3 +26,9 @@ export DEEPSEEK_CODING_PLAN_API_KEY=""
 # the workspace ID is the segment after /dashboard/workspace/ in the app URL)
 export KANEO_API_KEY=""
 export KANEO_WORKSPACE_ID=""
+
+# Slack MCP (optional): the official Slack MCP server needs an OAuth client from
+# an internal Slack app (https://api.slack.com/apps). Leave blank to keep the
+# slack server disabled in opencode.jsonc.
+export SLACK_MCP_CLIENT_ID=""
+export SLACK_MCP_CLIENT_SECRET=""
