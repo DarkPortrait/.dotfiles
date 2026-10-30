@@ -16,9 +16,11 @@ ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 ```
 
 It holds no identity. Name and email come from `GIT_AUTHOR_*`/`GIT_COMMITTER_*`
-in `secrets.zsh`, and commits are signed with the gpg key whose uid matches
-`GIT_COMMITTER_EMAIL`. Apps not started from a shell (e.g. a GUI git client)
-won't see these variables.
+in `secrets.zsh`, and the signing key from `GIT_CONFIG_KEY_0=user.signingkey`
+there. Name that key explicitly instead of relying on email matching: gpg will
+not resolve the `Name <email>` string git hands it as the signer, and commits
+fail with `skipped "...": No secret key`. Apps not started from a shell (e.g. a
+GUI git client) won't see these variables.
 
 ### TMUX Themes
 Clone the theme repository to `~/.tmux-themepack`
@@ -113,6 +115,17 @@ API keys are read from the environment, not the config:
 `MULTI_MODEL_GATEWAY_API_KEY` and `DEEPSEEK_CODING_PLAN_API_KEY` (providers) and
 `KANEO_API_KEY`/`KANEO_WORKSPACE_ID` (kaneo MCP) come from `secrets.zsh`, so
 opencode must be started from a shell that has sourced it.
+
+The background service (TUI and `opencode serve --service`) is a child of the
+shell that first launched the TUI, so it only sees env vars that shell had.
+Keys added to `secrets.zsh` later are invisible to it until you quit and
+relaunch the TUI. Alternatively, store provider keys inside opencode's own
+credential store, which every process reads regardless of env:
+
+```bash
+opencode auth login     # pick the provider, paste the key
+opencode auth list      # see what is stored
+```
 
 ClickUp and Figma use their official remote MCPs and log in with OAuth once per
 machine:
