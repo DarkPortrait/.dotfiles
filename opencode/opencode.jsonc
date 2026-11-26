@@ -266,14 +266,17 @@
       },
       "kaneo": {
         "type": "local",
+        // Sourcing secrets.zsh here rather than passing {env:KANEO_API_KEY}:
+        // the service's environment is captured when it starts, so a key
+        // rotation left the MCP holding a dead key until OpenCode restarted.
+        // secrets.zsh is assignments only (no stdout output), so it is safe to
+        // source into a process that speaks JSON-RPC over stdio.
         "command": [
-          "npx",
-          "-y",
-          "@sadamdi/kaneo-mcp",
-          "serve"
+          "zsh",
+          "-c",
+          "source ~/.dotfiles/secrets.zsh && exec npx -y @sadamdi/kaneo-mcp serve"
         ],
         "environment": {
-          "KANEO_API_KEY": "{env:KANEO_API_KEY}",
           "KANEO_WORKSPACE_ID": "{env:KANEO_WORKSPACE_ID}"
         }
       },
