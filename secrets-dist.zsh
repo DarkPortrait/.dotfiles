@@ -34,6 +34,14 @@ export DEEPSEEK_CODING_PLAN_API_KEY=""
 export KANEO_API_KEY=""
 export KANEO_WORKSPACE_ID=""
 
+# Acctuate Data API admin logins (POST $URL/auth/login)
+export AC_DATA_API_DEV_URL=""
+export AC_DATA_API_DEV_USER=""
+export AC_DATA_API_DEV_PASSWORD=""
+export AC_DATA_API_STAGING_URL=""
+export AC_DATA_API_STAGING_USER=""
+export AC_DATA_API_STAGING_PASSWORD=""
+
 # Slack MCP (optional): the official Slack MCP server needs an OAuth client from
 # an internal Slack app (https://api.slack.com/apps). Leave blank to keep the
 # slack server disabled in opencode.jsonc.
