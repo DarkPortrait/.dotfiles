@@ -258,11 +258,22 @@
     "servers": {
       "figma": {
         "type": "remote",
-        "url": "https://mcp.figma.com/mcp"
+        "url": "https://mcp.figma.com/mcp",
+        // Same as clickup below: Figma answers server/discover with
+        // "Method not found", so it is a 2025-era server. Skipping the probe
+        // avoids the fatal-on-ECONNRESET negotiation path.
+        "protocol": "legacy"
       },
       "clickup": {
         "type": "remote",
-        "url": "https://mcp.clickup.com/mcp"
+        "url": "https://mcp.clickup.com/mcp",
+        // ClickUp is a 2025-era server (initialize works, server/discover
+        // returns 400). The default version-negotiation probe fails hard on
+        // ECONNRESET instead of falling back, and mcp.clickup.com drops idle
+        // keep-alive connections after ~1 minute, so a stale socket at startup
+        // marked the server failed for the whole session. Skipping the probe
+        // uses the legacy initialize handshake, which OpenCode retries.
+        "protocol": "legacy"
       },
       "kaneo": {
         "type": "local",
