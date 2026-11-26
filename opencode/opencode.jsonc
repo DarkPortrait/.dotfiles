@@ -2,7 +2,7 @@
   // API keys come from ~/.dotfiles/secrets.zsh (template: secrets-dist.zsh).
   // Secrets: MULTI_MODEL_GATEWAY_API_KEY, DEEPSEEK_CODING_PLAN_API_KEY, KANEO_API_KEY, KANEO_WORKSPACE_ID
   // and optionally SLACK_MCP_CLIENT_ID/SLACK_MCP_CLIENT_SECRET.
-  // ClickUp and Figma use their official remote MCPs (OAuth: opencode mcp auth <name>).
+  // ClickUp, Figma and Resend use their official remote MCPs (OAuth: opencode mcp auth <name>).
   // Slack's official MCP needs an OAuth client from your own Slack app, so it ships
   // disabled. See readme.md#opencode-config.
   "$schema": "https://opencode.ai/config.json",
@@ -276,6 +276,13 @@
           "KANEO_API_KEY": "{env:KANEO_API_KEY}",
           "KANEO_WORKSPACE_ID": "{env:KANEO_WORKSPACE_ID}"
         }
+      },
+      "resend": {
+        // Resend's hosted MCP signs in with OAuth, like ClickUp and Figma:
+        // run `opencode mcp auth resend` once per machine. No key in secrets.zsh.
+        "type": "remote",
+        "url": "https://mcp.resend.com/mcp",
+        "enabled": true
       },
       "slack": {
         // Slack publishes no dynamic client registration, so a plain URL is not
