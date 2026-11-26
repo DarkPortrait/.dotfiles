@@ -127,12 +127,13 @@ opencode auth login     # pick the provider, paste the key
 opencode auth list      # see what is stored
 ```
 
-ClickUp and Figma use their official remote MCPs and log in with OAuth once per
-machine:
+ClickUp, Figma and Resend use their official remote MCPs and log in with OAuth
+once per machine:
 
 ```bash
 opencode mcp auth clickup
 opencode mcp auth figma
+opencode mcp auth resend
 ```
 
 #### Slack MCP (optional)
@@ -174,8 +175,9 @@ Three things are deliberately **not** in git and must be copied or re-created by
 
 1. `~/.dotfiles/secrets.zsh` — git identity, provider API keys, the Kaneo key and
    workspace ID, per-machine overrides. See [ZSH Config](#zsh-config).
-2. OpenCode MCP logins — `opencode mcp auth clickup` and `opencode mcp auth figma`.
-   See [OpenCode Config](#opencode-config). The Slack MCP is opt-in: fill in
+2. OpenCode MCP logins — `opencode mcp auth clickup`, `opencode mcp auth figma`
+   and `opencode mcp auth resend`. See [OpenCode Config](#opencode-config). The
+   Slack MCP is opt-in: fill in
    `SLACK_MCP_CLIENT_ID`/`SLACK_MCP_CLIENT_SECRET` and re-enable it there.
 3. OpenCode provider logins — run `opencode auth login` per provider (stored in
    `~/.local/share/opencode/auth.json`, also outside git).
